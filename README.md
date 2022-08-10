@@ -17,7 +17,7 @@
 
 ## **_Description_**
 
-## ![Get Fit](https://i.gifer.com/embedded/download/uGR.gif)
+## ![Get Fit](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.99inspiration.com%2Fwp-content%2Fuploads%2F2016%2F07%2FFunny-Animated-Gifs-of-Totoro-Making-Fitness-6.gif&f=1&nofb=1)
 
 Want to show off your workout routine or simply need some inspiration? Fitter is the perfect fit 😉 for you. With Fitter you are able to post your own fitness journey, as well as see what the rest of the FitFam is up to. Users will also have the ability to like and comment on other Feats.
 
@@ -25,12 +25,12 @@ Want to show off your workout routine or simply need some inspiration? Fitter is
 
 ## **_Technologies_**
 
-- Javascript, JSX, CSS
 - PostgreSQL/Sequelize
 - Express
 - React
 - Node
 - Git/Github
+- CSS
 - Heroku
 
 ---
