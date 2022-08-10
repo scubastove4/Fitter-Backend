@@ -4,10 +4,10 @@
 
 ### Collaborators
 
-| Anaflavia Almendras | John Dunn | Steve Morello                                            |
-| ------------------- | --------- | -------------------------------------------------------- |
-|                     |           | [GitHub](https://github.com/scubastove4)                 |
-|                     |           | [LinkedIn](https://www.linkedin.com/in/stephen-morello/) |
+| Anaflavia Almendras | John Dunn                                                 | Steve Morello                                            |
+| ------------------- | --------------------------------------------------------- | -------------------------------------------------------- |
+|                     | [GitHub](https://github.com/d00m-star)                    | [GitHub](https://github.com/scubastove4)                 |
+|                     | [LinkedIn](https://www.linkedin.com/in/john-michael-dunn) | [LinkedIn](https://www.linkedin.com/in/stephen-morello/) |
 
 ### **_Project Links_**
 
