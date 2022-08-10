@@ -4,10 +4,10 @@
 
 ### Collaborators
 
-| Anaflavia Almendras | John Dunn                                                 | Steve Morello                                            |
-| ------------------- | --------------------------------------------------------- | -------------------------------------------------------- |
-|                     | [GitHub](https://github.com/d00m-star)                    | [GitHub](https://github.com/scubastove4)                 |
-|                     | [LinkedIn](https://www.linkedin.com/in/john-michael-dunn) | [LinkedIn](https://www.linkedin.com/in/stephen-morello/) |
+| Anaflavia Almendras                                 | John Dunn                                                 | Steve Morello                                            |
+| --------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------------------- |
+| [GitHub](https://github.com/A-Almendras)            | [GitHub](https://github.com/d00m-star)                    | [GitHub](https://github.com/scubastove4)                 |
+| [LinkedIn](https://www.linkedin.com/in/aalmendras/) | [LinkedIn](https://www.linkedin.com/in/john-michael-dunn) | [LinkedIn](https://www.linkedin.com/in/stephen-morello/) |
 
 ### **_Project Links_**
 
@@ -25,11 +25,13 @@ Want to show off your workout routine or simply need some inspiration? Fitter is
 
 ## **_Technologies_**
 
+- Javascript, JSX, CSS
 - PostgreSQL/Sequelize
 - Express
 - React
 - Node
 - Git/Github
+- Heroku
 
 ---
 
