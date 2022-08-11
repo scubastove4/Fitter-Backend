@@ -9,16 +9,49 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Feat.belongsTo(models.User, {
+        foreignKey: 'userId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
+      Feat.hasMany(models.Comment, {
+        foreignKey: 'featId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
     }
   }
   Feat.init(
     {
-      image: DataTypes.STRING,
-      type: DataTypes.STRING,
-      bodyPart: DataTypes.STRING,
-      intensity: DataTypes.STRING,
-      description: DataTypes.STRING,
-      userId: DataTypes.INTEGER,
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      type: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      bodyPart: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      intensity: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      },
       likes: DataTypes.INTEGER
     },
     {
