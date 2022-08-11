@@ -9,13 +9,6 @@ router.get(
   controllers.commentControllers.GetAllComments
 )
 
-router.post(
-  '/:feat_id',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controllers.commentControllers.WriteComment
-)
-
 router.put(
   '/:comment_id',
   middleware.stripToken,
@@ -29,3 +22,5 @@ router.delete(
   middleware.verifyToken,
   controllers.commentControllers.DeleteComment
 )
+
+module.exports = router

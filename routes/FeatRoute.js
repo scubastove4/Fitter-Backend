@@ -10,12 +10,12 @@ router.get(
 )
 
 router.put(
-  '/:featId',
+  '/:feat_id',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.UpdateFeat
 )
-
+/////// post new Feat
 router.post(
   '/create',
   middleware.stripToken,
@@ -23,8 +23,16 @@ router.post(
   controllers.CreateFeat
 )
 
+////// post new Comment
+router.post(
+  '/:feat_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.commentControllers.WriteComment
+)
+
 router.delete(
-  '/:featId',
+  '/:feat_id',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.DeleteFeat
