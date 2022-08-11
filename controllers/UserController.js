@@ -8,15 +8,15 @@ const SignUp = async (req, res) => {
     if (existingUser) {
       res.send({ msg: `${existingUser.username} is taken.` })
     } else {
-      let password_digest = await middleware.hashPassword(password)
-      const newUser = await User.create(
-        name,
-        age,
-        location,
-        username,
-        email,
-        password_digest
-      )
+      let passwordDigest = await middleware.hashPassword(password)
+      const newUser = await User.create({
+        name: name,
+        age: age,
+        location: location,
+        username: username,
+        email: email,
+        passwordDigest: passwordDigest
+      })
       res.send(newUser)
     }
   } catch (e) {
@@ -31,10 +31,7 @@ const Login = async (req, res) => {
     })
     if (
       user &&
-      (await middleware.comparePassword(
-        req.body.password,
-        user.password_digest
-      ))
+      (await middleware.comparePassword(req.body.password, user.passwordDigest))
     ) {
       let payload = {
         id: user.id,
@@ -56,11 +53,11 @@ const ChangePassword = async (req, res) => {
       user &&
       (await middleware.comparePassword(
         req.body.oldPassword,
-        user.dataValues.password_digest
+        user.dataValues.passwordDigest
       ))
     ) {
-      let password_digest = await middleware.hashPassword(req.body.newPassword)
-      await user.update({ password_digest })
+      let passwordDigest = await middleware.hashPassword(req.body.newPassword)
+      await user.update({ passwordDigest })
       return res.send({ status: 'Success', msg: 'Password udpated!' })
     }
   } catch (e) {
