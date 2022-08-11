@@ -1,5 +1,6 @@
 const { User } = require('../models')
 const middleware = require('../middleware')
+const { use } = require('../routes/UserRouter')
 
 const SignUp = async (req, res) => {
   try {
@@ -46,7 +47,27 @@ const Login = async (req, res) => {
   }
 }
 
+const ChangePassword = async (req, res) => {
+  try {
+    let user = await User.findOne({ where: { username: req.body.username } })
+    if (
+      user &&
+      (await middleware.comparePassword(
+        req.body.oldPassword,
+        user.dataValues.passwordDigest
+      ))
+    ) {
+      let passwordDigest = await middleware.hashPassword(req.body.newPassword)
+      await user.update({ passwordDigest })
+      return res.send({ status: 'Success', msg: 'Password udpated!' })
+    }
+  } catch (e) {
+    throw e
+  }
+}
+
 module.exports = {
   SignUp,
-  Login
+  Login,
+  ChangePassword
 }
