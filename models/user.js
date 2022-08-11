@@ -9,26 +9,46 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // User.hasMany(models.Feat, {
-      //   foreignKey: 'userId',
-      //   onDelete: 'cascade',
-      //   onUpdate: 'cascade'
-      // })
-      // User.hasMany(models.Comment, {
-      //   foreignKey: 'userId',
-      //   onDelete: 'cascade',
-      //   onUpdate: 'cascade'
-      // })
+      User.hasMany(models.Feat, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'authored'
+      })
+      User.hasMany(models.Comment, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'commented'
+      })
     }
   }
   User.init(
     {
-      name: DataTypes.STRING,
-      age: DataTypes.INTEGER,
-      location: DataTypes.STRING,
-      username: DataTypes.STRING,
-      email: DataTypes.STRING,
-      passwordDigest: DataTypes.STRING
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      age: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      location: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      passwordDigest: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }
     },
     {
       sequelize,

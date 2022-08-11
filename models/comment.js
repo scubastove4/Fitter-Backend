@@ -9,23 +9,43 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // Comment.belongsTo(models.User, {
-      //   foreignKey: 'userId',
-      //   onDelete: 'CASCADE',
-      //   onUpdate: 'CASCADE'
-      // })
-      // Comment.belongsTo(models.Feat, {
-      //   foreignKey: 'featId',
-      //   onDelete: 'CASCADE',
-      //   onUpdate: 'CASCADE'
-      // })
+      Comment.belongsTo(models.User, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'commenter'
+      })
+      Comment.belongsTo(models.Feat, {
+        foreignKey: 'feat_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'comments'
+      })
     }
   }
   Comment.init(
     {
       description: DataTypes.STRING,
-      userId: DataTypes.INTEGER,
-      featId: DataTypes.INTEGER,
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        field: 'user_id'
+      },
+      featId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'feats',
+          key: 'id'
+        },
+        field: 'feat_id'
+      },
       likes: DataTypes.INTEGER
     },
     {

@@ -9,26 +9,52 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // Feat.belongsTo(models.User, {
-      //   foreignKey: 'userId',
-      //   onDelete: 'CASCADE',
-      //   onUpdate: 'CASCADE'
-      // })
-      // Feat.hasMany(models.Comment, {
-      //   foreignKey: 'featId',
-      //   onDelete: 'CASCADE',
-      //   onUpdate: 'CASCADE'
-      // })
+      Feat.belongsTo(models.User, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'author'
+      })
+      Feat.hasMany(models.Comment, {
+        foreignKey: 'feat_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'comment_list'
+      })
     }
   }
   Feat.init(
     {
-      image: DataTypes.STRING,
-      type: DataTypes.STRING,
-      bodyPart: DataTypes.STRING,
-      intensity: DataTypes.STRING,
-      description: DataTypes.STRING,
-      userId: DataTypes.INTEGER,
+      image: {
+        type: DataTypes.STRING
+      },
+      type: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      bodyPart: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: 'body_part'
+      },
+      intensity: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        field: 'user_id'
+      },
       likes: DataTypes.INTEGER
     },
     {
