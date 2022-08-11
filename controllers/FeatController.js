@@ -1,9 +1,10 @@
-const { Feat } = require('../models')
-// const { User } = require('../routes/UserRouter')
+const { Feat, User } = require('../models')
 
 const GetAllFeats = async (req, res) => {
   try {
-    const feats = await Feat.findAll()
+    const feats = await Feat.findAll({
+      include: { model: User, as: 'author', attributes: ['username'] }
+    })
     res.send(feats)
   } catch (error) {
     throw error
