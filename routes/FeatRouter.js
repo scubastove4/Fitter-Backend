@@ -1,26 +1,26 @@
 const router = require('express').Router()
-const controllers = require('../controllers/FeatController')
+const controllers = require('../controllers')
 const middleware = require('../middleware')
 
 router.get(
   '/',
   middleware.stripToken,
   middleware.verifyToken,
-  controllers.GetAllFeats
+  controllers.featControllers.GetAllFeats
 )
 
 router.put(
   '/:feat_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controllers.UpdateFeat
+  controllers.featControllers.UpdateFeat
 )
 /////// post new Feat
 router.post(
   '/create',
   middleware.stripToken,
   middleware.verifyToken,
-  controllers.CreateFeat
+  controllers.featControllers.CreateFeat
 )
 
 ////// post new Comment
@@ -35,7 +35,7 @@ router.delete(
   '/:feat_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controllers.DeleteFeat
+  controllers.featControllers.DeleteFeat
 )
 
 module.exports = router
