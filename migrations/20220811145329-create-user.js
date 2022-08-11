@@ -16,11 +16,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      locatoin: {
+      location: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      userName: {
+      username: {
         type: Sequelize.STRING,
         allowNull: false
       },

@@ -9,8 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       image: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       type: {
         type: Sequelize.STRING,
@@ -18,7 +17,8 @@ module.exports = {
       },
       bodyPart: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        field: 'body_part'
       },
       intensity: {
         type: Sequelize.STRING,
@@ -35,7 +35,8 @@ module.exports = {
         references: {
           model: 'users',
           key: 'id'
-        }
+        },
+        field: 'user_id'
       },
       likes: {
         type: Sequelize.INTEGER

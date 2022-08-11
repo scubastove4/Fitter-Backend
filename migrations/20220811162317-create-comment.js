@@ -19,7 +19,8 @@ module.exports = {
         references: {
           model: 'users',
           key: 'id'
-        }
+        },
+        field: 'user_id'
       },
       featId: {
         type: Sequelize.INTEGER,
@@ -28,7 +29,8 @@ module.exports = {
         references: {
           model: 'feats',
           key: 'id'
-        }
+        },
+        field: 'feat_id'
       },
       likes: {
         type: Sequelize.INTEGER
