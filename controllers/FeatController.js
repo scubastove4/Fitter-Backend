@@ -23,7 +23,7 @@ const UpdateFeat = async (req, res) => {
   try {
     const updatedFeat = await Feat.update(
       { ...req.body },
-      { where: { id: req.params.featId }, returning: true }
+      { where: { id: req.params.feat_id }, returning: true }
     )
     res.send(updatedFeat)
   } catch (error) {
@@ -34,11 +34,11 @@ const UpdateFeat = async (req, res) => {
 const DeleteFeat = async (req, res) => {
   try {
     await Feat.destroy({
-      where: { id: req.params.featId }
+      where: { id: req.params.feat_id }
     })
     res.send({
       msg: 'Feat Delete Success!',
-      payload: req.params.featId,
+      payload: req.params.feat_id,
       status: 'Ok'
     })
   } catch (error) {
