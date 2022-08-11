@@ -30,7 +30,8 @@ module.exports = {
       },
       passwordDigest: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        field: 'password_digest'
       },
       createdAt: {
         allowNull: false,
