@@ -1,6 +1,5 @@
 const { User } = require('../models')
 const middleware = require('../middleware')
-const { use } = require('../routes/UserRouter')
 
 const SignUp = async (req, res) => {
   try {
