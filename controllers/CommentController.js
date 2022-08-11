@@ -14,7 +14,7 @@ const WriteComment = async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
-      feat_id: req.params.feat_id
+      featId: req.params.feat_id
     })
     return res.send(newComment)
   } catch (e) {
