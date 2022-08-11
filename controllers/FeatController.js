@@ -1,9 +1,23 @@
-const { Feat, User } = require('../models')
+const { Feat, User, Comment } = require('../models')
 
 const GetAllFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
-      include: { model: User, as: 'author', attributes: ['username'] }
+      include: [
+        { model: User, as: 'author', attributes: ['username'] },
+        {
+          model: Comment,
+          as: 'comment_list',
+          attributes: ['description'],
+          include: [
+            {
+              model: User,
+              as: 'commenter',
+              attributes: ['username']
+            }
+          ]
+        }
+      ]
     })
     res.send(feats)
   } catch (error) {
