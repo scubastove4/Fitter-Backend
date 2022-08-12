@@ -13,8 +13,8 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/user', UserRouter)
-app.use('/feats', FeatRouter)
-app.use('/comments', CommentRouter)
+app.use('/api/user', UserRouter)
+app.use('/api/feats', FeatRouter)
+app.use('/api/comments', CommentRouter)
 
 app.listen(PORT, () => console.log(`Server Running On Port: ${PORT}`))
