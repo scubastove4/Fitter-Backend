@@ -4,7 +4,11 @@ const GetAllFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
       include: [
-        { model: User, as: 'author', attributes: ['username'] },
+        {
+          model: User,
+          as: 'author',
+          attributes: ['username', 'location', 'age']
+        },
         {
           model: Comment,
           as: 'comment_list',
