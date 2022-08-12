@@ -21,7 +21,7 @@ module.exports = {
         field: 'body_part'
       },
       intensity: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       description: {
