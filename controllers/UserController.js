@@ -27,7 +27,8 @@ const SignUp = async (req, res) => {
 const Login = async (req, res) => {
   try {
     const user = await User.findOne({
-      where: { username: req.body.username }
+      where: { username: req.body.username },
+      raw: true
     })
     if (
       user &&
@@ -42,6 +43,7 @@ const Login = async (req, res) => {
       let token = middleware.createToken(payload)
       return res.send({ user: payload, token })
     }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   } catch (e) {
     throw e
   }

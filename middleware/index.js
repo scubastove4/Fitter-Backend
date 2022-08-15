@@ -22,13 +22,12 @@ const createToken = (payload) => {
 
 const verifyToken = (req, res, next) => {
   const { token } = res.locals
-  try {
-    let payload = jwt.verify(token, APP_SECRET)
-    if (payload) return next()
-    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
-  } catch (e) {
-    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  let payload = jwt.verify(token, APP_SECRET)
+  if (payload) {
+    res.locals.payload = payload
+    return next()
   }
+  res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
 }
 
 const stripToken = (req, res, next) => {
