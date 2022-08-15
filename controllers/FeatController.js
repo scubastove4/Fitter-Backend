@@ -29,6 +29,36 @@ const GetAllFeats = async (req, res) => {
   }
 }
 
+const GetUserFeats = async (req, res) => {
+  try {
+    const feats = await Feat.findAll({
+      where: { userId: req.params.userId },
+      include: [
+        {
+          model: User,
+          as: 'author',
+          attributes: ['username', 'location', 'age']
+        },
+        {
+          model: Comment,
+          as: 'comment_list',
+          attributes: ['description'],
+          include: [
+            {
+              model: User,
+              as: 'commenter',
+              attributes: ['id', 'username']
+            }
+          ]
+        }
+      ]
+    })
+    res.send(feats)
+  } catch (error) {
+    throw error
+  }
+}
+
 const CreateFeat = async (req, res) => {
   try {
     const createdFeat = await Feat.create({ ...req.body })
@@ -67,6 +97,7 @@ const DeleteFeat = async (req, res) => {
 
 module.exports = {
   GetAllFeats,
+  GetUserFeats,
   DeleteFeat,
   UpdateFeat,
   CreateFeat
