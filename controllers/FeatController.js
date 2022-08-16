@@ -61,7 +61,7 @@ const GetUserFeats = async (req, res) => {
 
 const CreateFeat = async (req, res) => {
   try {
-    const createdFeat = await Feat.create({ ...req.body })
+    const createdFeat = await Feat.create(req.body)
     res.send(createdFeat)
   } catch (error) {
     throw error
