@@ -3,6 +3,7 @@ const { Feat, User, Comment } = require('../models')
 const GetAllFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
+      order: [['createdAt', 'DESC']],
       include: [
         {
           model: User,
@@ -12,6 +13,7 @@ const GetAllFeats = async (req, res) => {
         {
           model: Comment,
           as: 'comment_list',
+          order: [['createdAt', 'DESC']],
           attributes: ['description'],
           include: [
             {
@@ -33,6 +35,7 @@ const GetUserFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
       where: { userId: req.params.userId },
+      order: [['createdAt', 'DESC']],
       include: [
         {
           model: User,
@@ -42,6 +45,7 @@ const GetUserFeats = async (req, res) => {
         {
           model: Comment,
           as: 'comment_list',
+          order: [['createdAt', 'DESC']],
           attributes: ['description'],
           include: [
             {
