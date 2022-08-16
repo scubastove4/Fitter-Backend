@@ -31,6 +31,37 @@ const GetAllFeats = async (req, res) => {
   }
 }
 
+const GetFeatById = async (req, res) => {
+  try {
+    const feat = await Feat.findAll({
+      where: { featId: req.params.featId },
+      include: [
+        {
+          model: User,
+          as: 'author',
+          attributes: ['username', 'location', 'age']
+        },
+        {
+          model: Comment,
+          as: 'comment_list',
+          order: [['createdAt', 'DESC']],
+          attributes: ['description'],
+          include: [
+            {
+              model: User,
+              as: 'commenter',
+              attributes: ['id', 'username']
+            }
+          ]
+        }
+      ]
+    })
+    res.send(feat)
+  } catch (error) {
+    throw error
+  }
+}
+
 const GetUserFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
@@ -104,5 +135,6 @@ module.exports = {
   GetUserFeats,
   DeleteFeat,
   UpdateFeat,
-  CreateFeat
+  CreateFeat,
+  GetFeatById
 }
