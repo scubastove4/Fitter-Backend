@@ -16,6 +16,13 @@ router.get(
   controllers.featControllers.GetUserFeats
 )
 
+router.get(
+  '/:feat_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.featControllers.GetFeatById
+)
+
 router.put(
   '/:feat_id',
   middleware.stripToken,
