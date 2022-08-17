@@ -117,8 +117,9 @@ const GetUserFeats = async (req, res) => {
   }
 }
 
-const CreateFeat = async (req, res) => {
+const CreateFeat = async (req, res, next) => {
   try {
+    console.log(req.file)
     const createdFeat = await Feat.create(req.body)
     res.send(createdFeat)
   } catch (error) {
