@@ -1,4 +1,4 @@
-const { Feat, User, Comment } = require('../models')
+const { Feat, User, Comment, FeatLike, CommentLike } = require('../models')
 
 const GetAllFeats = async (req, res) => {
   try {
@@ -19,9 +19,15 @@ const GetAllFeats = async (req, res) => {
             {
               model: User,
               as: 'commenter',
-              attributes: ['id', 'username']
+              attributes: ['id']
             }
           ]
+        },
+        {
+          model: User,
+          as: 'feat_likes',
+          through: { attributes: [] },
+          attributes: ['id']
         }
       ]
     })
@@ -51,8 +57,20 @@ const GetFeatById = async (req, res) => {
               model: User,
               as: 'commenter',
               attributes: ['id', 'username']
+            },
+            {
+              model: User,
+              as: 'comment_likes',
+              through: { attributes: [] },
+              attributes: ['id']
             }
           ]
+        },
+        {
+          model: User,
+          as: 'feat_likes',
+          through: { attributes: [] },
+          attributes: ['id']
         }
       ]
     })
@@ -82,9 +100,14 @@ const GetUserFeats = async (req, res) => {
             {
               model: User,
               as: 'commenter',
-              attributes: ['id', 'username']
+              attributes: ['id']
             }
           ]
+        },
+        {
+          model: User,
+          as: 'feat_likes',
+          through: { attributes: [] }
         }
       ]
     })

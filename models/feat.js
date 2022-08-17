@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
       Feat.belongsTo(models.User, {
         foreignKey: 'user_id',
         onDelete: 'CASCADE',
@@ -20,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
         as: 'comment_list'
+      })
+      Feat.belongsToMany(models.User, {
+        as: 'feat_likes',
+        through: models.FeatLike,
+        foreignKey: 'featId'
       })
     }
   }
@@ -54,8 +58,7 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id'
         },
         field: 'user_id'
-      },
-      likes: DataTypes.INTEGER
+      }
     },
     {
       sequelize,
