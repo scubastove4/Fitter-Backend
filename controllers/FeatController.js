@@ -26,7 +26,8 @@ const GetAllFeats = async (req, res) => {
         {
           model: User,
           as: 'feat_likes',
-          through: { attributes: [] }
+          through: { attributes: [] },
+          attributes: ['id']
         }
       ]
     })
@@ -60,14 +61,16 @@ const GetFeatById = async (req, res) => {
             {
               model: User,
               as: 'comment_likes',
-              through: { attributes: [] }
+              through: { attributes: [] },
+              attributes: ['id']
             }
           ]
         },
         {
           model: User,
           as: 'feat_likes',
-          through: { attributes: [] }
+          through: { attributes: [] },
+          attributes: ['id']
         }
       ]
     })
