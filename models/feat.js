@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'comment_list'
       })
       Feat.belongsToMany(models.User, {
-        as: 'feats',
+        as: 'feat_likes',
         through: models.FeatLike,
         foreignKey: 'featId'
       })

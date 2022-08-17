@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'comments'
       })
       Comment.belongsToMany(models.User, {
-        as: 'comments',
+        as: 'comment_likes',
         through: models.CommentLike,
         foreignKey: 'commentId'
       })
