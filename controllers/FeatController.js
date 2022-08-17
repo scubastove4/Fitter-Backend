@@ -34,7 +34,7 @@ const GetAllFeats = async (req, res) => {
 const GetFeatById = async (req, res) => {
   try {
     const feat = await Feat.findOne({
-      where: { featId: req.params.feat_id },
+      where: { id: req.params.feat_id },
       include: [
         {
           model: User,
