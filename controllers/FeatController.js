@@ -51,7 +51,7 @@ const GetFeatById = async (req, res) => {
           model: Comment,
           as: 'comment_list',
           order: [['createdAt', 'DESC']],
-          attributes: ['description'],
+          attributes: ['description', 'id'],
           include: [
             {
               model: User,
