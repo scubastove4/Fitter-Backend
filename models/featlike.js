@@ -1,7 +1,7 @@
 'use strict'
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
-  class Comment extends Model {
+  class FeatLike extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,28 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Comment.belongsTo(models.User, {
-        foreignKey: 'user_id',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-        as: 'commenter'
-      })
-      Comment.belongsTo(models.Feat, {
-        foreignKey: 'feat_id',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-        as: 'comments'
-      })
-      Comment.belongsToMany(models.User, {
-        as: 'comments',
-        through: models.CommentLike,
-        foreignKey: 'commentId'
-      })
     }
   }
-  Comment.init(
+  FeatLike.init(
     {
-      description: DataTypes.STRING,
       userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -54,9 +36,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Comment',
-      tableName: 'comments'
+      modelName: 'FeatLike',
+      tableName: 'feat_likes'
     }
   )
-  return Comment
+  return FeatLike
 }
