@@ -19,7 +19,7 @@ const GetAllFeats = async (req, res) => {
             {
               model: User,
               as: 'commenter',
-              attributes: ['id', 'username']
+              attributes: ['id']
             }
           ]
         },
@@ -100,7 +100,7 @@ const GetUserFeats = async (req, res) => {
             {
               model: User,
               as: 'commenter',
-              attributes: ['id', 'username']
+              attributes: ['id']
             }
           ]
         },
