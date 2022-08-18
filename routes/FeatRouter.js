@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const controllers = require('../controllers')
 const middleware = require('../middleware')
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 router.get(
   '/',
@@ -32,6 +34,7 @@ router.put(
 /////// post new Feat
 router.post(
   '/create',
+  upload.single('featImage'),
   middleware.stripToken,
   middleware.verifyToken,
   controllers.featControllers.CreateFeat
