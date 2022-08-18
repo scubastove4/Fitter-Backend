@@ -19,14 +19,14 @@ router.delete(
 
 //////// comment likes /////////
 router.post(
-  '/comment',
+  '/comment/:user_id/:comment_id',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.likeControllers.AddCommentLike
 )
 
 router.delete(
-  '/comment',
+  '/comment/:user_id/:comment_id',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.likeControllers.DeleteCommentLike
