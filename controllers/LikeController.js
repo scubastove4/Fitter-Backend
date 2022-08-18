@@ -15,7 +15,10 @@ const DeleteFeatLike = async (req, res) => {
   try {
     await FeatLike.destroy({
       where: {
-        [Op.and]: [{ userId: req.body.userId }, { featId: req.body.featId }]
+        [Op.and]: [
+          { userId: req.params.user_id },
+          { featId: req.params.feat_id }
+        ]
       }
     })
     res.send({

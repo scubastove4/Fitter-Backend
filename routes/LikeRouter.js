@@ -4,14 +4,14 @@ const middleware = require('../middleware')
 
 //////// feat likes /////////
 router.post(
-  '/feat',
+  '/feat/:user_id/:feat_id',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.likeControllers.AddFeatLike
 )
 
 router.delete(
-  '/feat',
+  '/feat/:user_id/:feat_id',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.likeControllers.DeleteFeatLike
