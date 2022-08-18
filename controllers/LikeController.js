@@ -4,7 +4,9 @@ const { Op } = require('sequelize')
 
 const AddFeatLike = async (req, res) => {
   try {
-    const likedFeat = await FeatLike.create(req.body)
+    const likedFeat = { userId: req.params.user_id, featId: req.params.feat_id }
+
+    await FeatLike.create(likedFeat)
     res.send(likedFeat)
   } catch (error) {
     throw error
