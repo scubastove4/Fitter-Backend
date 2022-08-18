@@ -35,7 +35,11 @@ const DeleteFeatLike = async (req, res) => {
 
 const AddCommentLike = async (req, res) => {
   try {
-    const likedComment = await CommentLike.create(req.body)
+    const likedComment = {
+      userId: req.params.user_id,
+      commentId: req.params.comment_id
+    }
+    await CommentLike.create(likedComment)
     res.send(likedComment)
   } catch (error) {
     throw error
@@ -47,8 +51,8 @@ const DeleteCommentLike = async (req, res) => {
     await CommentLike.destroy({
       where: {
         [Op.and]: [
-          { userId: req.body.userId },
-          { commentId: req.body.commentId }
+          { userId: req.params.user_id },
+          { commentId: req.params.comment_id }
         ]
       }
     })
