@@ -1,4 +1,5 @@
 const { Feat, User, Comment, FeatLike, CommentLike } = require('../models')
+const path = require('path')
 
 const GetAllFeats = async (req, res) => {
   try {
@@ -119,8 +120,15 @@ const GetUserFeats = async (req, res) => {
 
 const CreateFeat = async (req, res, next) => {
   try {
+    const createdFeat = await Feat.create({
+      image: req.file.path,
+      type: req.body.type,
+      bodyPart: req.body.bodyPart,
+      intensity: req.body.intensity,
+      description: req.body.description,
+      userId: req.body.userId
+    })
     console.log(req.file)
-    const createdFeat = await Feat.create(req.body)
     res.send(createdFeat)
   } catch (error) {
     throw error
