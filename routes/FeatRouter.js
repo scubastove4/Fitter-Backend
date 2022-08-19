@@ -1,24 +1,32 @@
 const router = require('express').Router()
 const controllers = require('../controllers')
 const middleware = require('../middleware')
-const multer = require('multer')
+// const multer = require('multer')
+// const path = require('path')
 
-//storage strategy
-const storage = multer.diskStorage({
-  // destination property
-  destination: function (req, file, cb) {
-    cb(null, './uploads/')
-  },
-  // how the file should be named
-  filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname)
-  }
-})
+// storage strategy
+// const storage = multer.diskStorage({
+//   destination property
+//   destination: (req, file, cb) => {
+//     cb(null, 'Feat')
+//   },
+//   how the file should be named
+//   filename: (req, file, cb) => {
+//     cb(null, new Date().toISOString() + path.extname(file.originalname))
+//   }
+// })
 
 // where multer tries to store incoming files
 // const upload = multer({ dest: 'uploads/' })
 // changing to how to we store files
-const upload = multer({ storage: storage })
+// const upload = multer({
+//   storage: storage,
+//   fileFilter: (req, file, cb) => {
+//     const fileTypes = /jpeg|JPG|jpg|png|gif/
+//     const mimeType = fileTypes.test(file.mimetype)
+//     const extname = fileTypes.test(path.extname(file.originalname))
+//   }
+// })
 
 router.get(
   '/',
@@ -52,7 +60,7 @@ router.post(
   '/create',
   middleware.stripToken,
   middleware.verifyToken,
-  upload.single('image'), // given by upload initialization
+  // upload.single('image'), // given by upload initialization
   controllers.featControllers.CreateFeat
 )
 
