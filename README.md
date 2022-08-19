@@ -41,20 +41,31 @@ Want to show off your workout routine or simply need some inspiration? Fitter is
 
 ## **_Screenshots_**
 
-### One
+### Main Feed
 
-### Two
+![Main Feed](images/main_feed.png)
+
+### Editing Feats
+
+![Edit Feat](images/edit_on_feed.png)
 
 ### Three
+
+![User Profile](images/user_profile.png)
 
 ## **_Task List(s)_**
 
 - Future Updates
 
-  - [ ]
+  - [ ] Mobile-friendly version
+  - [ ] Fix image upload when editing
+  - [ ] Optional image uploading
+  - [ ] Delete account
+  - [ ] Delete account
 
 - Completed updates
 
-  - [x]
+  - [x] Like models for feats and comments
+  - [x] Image upload and display
 
 ## **_Credits_**
