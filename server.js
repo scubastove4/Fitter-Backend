@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3001
 app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
+
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/user', UserRouter)
@@ -20,6 +21,6 @@ app.use('/api/feats', FeatRouter)
 app.use('/api/comments', CommentRouter)
 app.use('/api/likes', LikeRouter)
 
-// app.use('uploads', express.static('./uploads'))
+app.use('/uploads', express.static('./uploads'))
 
 app.listen(PORT, () => console.log(`Server Running On Port: ${PORT}`))
