@@ -78,5 +78,6 @@ To incorporate Firebase storage, you will need to set up a Firebase account thro
 
 ## **_Credits_**
 
+- [Multer](https://www.npmjs.com/package/multer)
 - [Firebase](https://firebase.google.com/)
 - [multer-firebase-storage](https://www.npmjs.com/package/multer-firebase-storage)
