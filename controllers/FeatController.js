@@ -1,5 +1,19 @@
 const { Feat, User, Comment, FeatLike, CommentLike } = require('../models')
 const path = require('path')
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  // destination property
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+  },
+  // how the file should be named
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage })
 
 const GetAllFeats = async (req, res) => {
   try {
@@ -84,6 +98,7 @@ const GetFeatById = async (req, res) => {
 const GetUserFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
+      image,
       where: { userId: req.params.userId },
       order: [['createdAt', 'DESC']],
       include: [
@@ -121,7 +136,7 @@ const GetUserFeats = async (req, res) => {
 const CreateFeat = async (req, res, next) => {
   try {
     const createdFeat = await Feat.create({
-      image: req.file.path,
+      image: req.file.publicUrl,
       type: req.body.type,
       bodyPart: req.body.bodyPart,
       intensity: req.body.intensity,
@@ -131,7 +146,7 @@ const CreateFeat = async (req, res, next) => {
     console.log(req.file)
     res.send(createdFeat)
   } catch (error) {
-    throw error
+    throw (error = res.status(201).json(data))
   }
 }
 
