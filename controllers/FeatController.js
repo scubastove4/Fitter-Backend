@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-
 const GetAllFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
@@ -147,7 +146,7 @@ const CreateFeat = async (req, res, next) => {
     console.log(req.file)
     res.send(createdFeat)
   } catch (error) {
-    throw (error = res.status(201).json(data))
+    throw error
   }
 }
 
