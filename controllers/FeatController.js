@@ -15,6 +15,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
+
 const GetAllFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
@@ -98,7 +99,6 @@ const GetFeatById = async (req, res) => {
 const GetUserFeats = async (req, res) => {
   try {
     const feats = await Feat.findAll({
-      image,
       where: { userId: req.params.userId },
       order: [['createdAt', 'DESC']],
       include: [
@@ -143,6 +143,7 @@ const CreateFeat = async (req, res, next) => {
       description: req.body.description,
       userId: req.body.userId
     })
+
     console.log(req.file)
     res.send(createdFeat)
   } catch (error) {

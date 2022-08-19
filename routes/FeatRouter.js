@@ -39,7 +39,15 @@ const multer = Multer({
 // where multer tries to store incoming files
 // const upload = multer({ dest: 'uploads/' })
 // changing to how to we store files
-// const upload = multer({ storage: storage })
+
+// const upload = multer({
+//   storage: storage,
+//   fileFilter: (req, file, cb) => {
+//     const fileTypes = /jpeg|JPG|jpg|png|gif/
+//     const mimeType = fileTypes.test(file.mimetype)
+//     const extname = fileTypes.test(path.extname(file.originalname))
+//   }
+// })
 
 router.get(
   '/',
