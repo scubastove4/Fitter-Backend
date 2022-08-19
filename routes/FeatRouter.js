@@ -8,11 +8,11 @@ const FirebaseStorage = require('multer-firebase-storage')
 
 const multer = Multer({
   storage: FirebaseStorage({
-    bucketName: 'imageuploads-a088f.appspot.com',
+    bucketName: 'fitter-sm.appspot.com',
     credentials: {
       clientEmail: process.env.CLIENT_EMAIL,
       privateKey: process.env.FIREBASE_KEY?.replace(/\\n/g, '\n'),
-      projectId: 'imageuploads-a088f'
+      projectId: 'fitter-sm'
     },
     public: true,
     hooks: {
